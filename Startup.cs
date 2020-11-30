@@ -17,14 +17,12 @@ namespace ODataSample {
 
 		public IConfiguration Configuration { get; }
 
-		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services) {
 			//services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 			services.AddOData();
-			services.AddControllers(mvcOptions => mvcOptions.EnableEndpointRouting = false);			
+			services.AddControllers(mvcOptions => mvcOptions.EnableEndpointRouting = false);
 		}
-
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+		
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env) {
 			if (env.IsDevelopment()) {
 				app.UseDeveloperExceptionPage();
@@ -43,7 +41,7 @@ namespace ODataSample {
 
 		private static IEdmModel GetEdmModel() {
 			ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-			builder.EntitySet<Book>("Books").EntityType.Count().Select();
+			builder.EntitySet<Book>("Books").EntityType.Count().Select().Page(int.MaxValue, 2);
 			return builder.GetEdmModel();
 		}
 	}

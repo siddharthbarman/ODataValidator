@@ -18,6 +18,6 @@ namespace ODataSample.Attributes {
                     });
             }            
             base.ValidateQuery(request, queryOptions);
-        }
+        }        
     }
 }
