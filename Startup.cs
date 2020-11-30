@@ -87,11 +87,12 @@ namespace ODataSample {
 
 		private static IEdmModel GetEdmModel() {
 			ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-			builder.EntitySet<Book>("Books").EntityType.Select().Page(int.MaxValue, 2);
+			builder.EntitySet<Book>("Books").EntityType.Select().Page(int.MaxValue, MIN_PAGE_SIZE);
 			return builder.GetEdmModel();
 		}
 
 		private static ILoggerFactory _loggerFactory = InitializeLogging();
+		private const int MIN_PAGE_SIZE = 2;
 		
 		private static ILoggerFactory InitializeLogging() {
 			return LoggerFactory.Create(builder => {            
