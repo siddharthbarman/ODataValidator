@@ -28,8 +28,7 @@ namespace ODataSample {
 			services.AddLogging(builder => {
 				builder
 				.ClearProviders()
-				.AddNLog()
-				.SetMinimumLevel(LogLevel.Trace);				
+				.AddNLog(); // Not setting any log level here as NLog will use it from the nlog.config file				
 			});
 			
 			bool useInMemoryDB = Configuration.GetConfigValue<bool>("EntityFramework:UseInMemoryDB"); 
