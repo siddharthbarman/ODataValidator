@@ -19,9 +19,9 @@ namespace ODataSample.Controllers {
 
 		[ODataRoute]		
 		[RestrictedQueryEnableAttribute(
-			DisallowedFilterProperties = "Title,Price", 
+			DisallowedFilterProperties = "Title", 
 			AllowedQueryOptions = AllowedQueryOptions.Filter | AllowedQueryOptions.Top | AllowedQueryOptions.Skip | AllowedQueryOptions.OrderBy | AllowedQueryOptions.Select,
-			AllowedOrderByProperties = "Id, PublishYear"			
+			AllowedOrderByProperties = "PublishYear, Price"			
 		)]
 		public IQueryable<Book> Get() {
 			_logger.LogInformation("Get called");
